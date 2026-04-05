@@ -30,62 +30,6 @@
 		.hand{cursor:pointer;}
 		.say{margin-left:5px;}
 		.space{margin-right:150px;}
-        .wrapper {
-			width: 700px;
-			height: 525px;
-            overflow: hidden;
-			position: relative;
-            text-align: center;
-            margin: 10px auto;
-            cursor: pointer;
-		}
-        /* 5张图片叠加到一块 */
-        .wrapper img {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-            display: none;
-        }
-        .wrapper img:nth-of-type(1) {
-			display: block;
-		}
-        /* 小圆点 */
-        .btn {
-            width: 150px;
-            display: flex;
-            justify-content: space-around;
-            position: absolute;
-            left: 225px;
-            bottom: 10px;
-            z-index: 100
-        }
-        .btn span {
-            display: block;
-            width: 15px;
-            height: 15px;
-            border: 3px ;
-            border-radius: 50%;
-        }
-        /* 左右箭头 */
-        .wrapper a {
-            text-decoration: none;
-            font-size: 0;
-            color: white;
-            position: absolute;
-            top: 35%;
-        }
-        .wrapper a:nth-of-type(1) {
-            left: 10px;
-    
-        }
-        .wrapper a:nth-of-type(2) {
-            right: 10px;
-        }
-        .active {
-            background-color: white;
-        }
 	</style>
 </head>
 <body>
@@ -95,7 +39,7 @@
 			<div id="text">
 				<div id="code">
 					<font color="#FF0000">
-					<span class="say">欣欣</span><br>
+					<span class="say">欢欢</span><br>
                     <span class="say"></span><br>
 					<span class="say">你对我就是《怦然心动》中</span><br>
                     <span class="say"></span><br>
@@ -105,13 +49,13 @@
                     <span class="say"></span><br>
 					<span class="say">不为世俗所及</span><br>
                     <span class="say"></span><br>
-					<span class="say">读了很多书也识了很多字</span><br>
+					<span class="say">我翻来覆去地在想</span><br>
                     <span class="say"></span><br>
-					<span class="say">我想找到最合适的话语去表达对你的欢喜</span><br>
+					<span class="say">想找到最合适的话语去表达对你的欢喜</span><br>
                     <span class="say"></span><br>
-					<span class="say">可最后却发现，一切都比不过一句</span><br>
+					<span class="say">最后我想到了一句话</span><br>
                     <span class="say"></span><br>
-					<span class="say">我爱你！</span><br>
+					<span class="say">我想和你一起去看季节的慢慢变换</span><br>
                     <span class="say"></span><br>
                     <span class="say"></span><br>
                     <span class="say"></span><br>
@@ -120,23 +64,10 @@
 				</div>
 			</div>
 			<div id="clock-box">
-				<span><font color="#666666">欣欣，我们相爱已经是</font></span>
+				<span><font color="#666666">欢欢，我们相识已经是</font></span>
 				<div id="clock"></div>
 			</div>
 			<canvas id="canvas" width="1100" height="700"></canvas>
-		</div>
-        <div class="wrapper">
-            <div class="contain">
-                    <img src="pic/1713620114636.jpg" alt="">
-                    <img src="pic/1713620150149.jpg" alt="">
-                    <img src="pic/1713620175106.jpg" alt="">
-                    <img src="pic/1713620198770.jpg" alt="">
-                    <img src="pic/1713620247685.jpg" alt="">
-                    <img src="pic/1713620247687.jpg" alt="">
-                    <img src="pic/1713620247689.jpg" alt="">
-            </div>
-			<a href="javascript:void(0);">&lt;</a>
-			<a href="javascript:void(0);">&gt;</a>
         </div>
 	</div>
 	<script>
@@ -144,15 +75,15 @@
 
 
 	// 2016 是 年
-	var year = 2020;
+	var year = 2024;
 	// 2 是 月
-    var month = 12;
+    var month = 2;
     // 2 是 日
-    var day = 24;
+    var day = 28;
     // 这是小时
-    var hour = 0;
+    var hour = 12;
     // 这是分钟
-    var minute = 0;
+    var minute = 30;
     // 这是秒
     var second = 0;
 
@@ -189,7 +120,7 @@
     var seed = tree.seed;
     var foot = tree.footer;
     var hold = 1;
- 
+
     canvas.click(function(e) {
         var offset = canvas.offset(),
         x,
@@ -303,53 +234,6 @@
     }));
     runAsync().start();
 })();
-    var index=0;
-    // 点击上一张
-    $("a:first").click(function(){
-        prev_pic();
-    })
-    // 点击下一张
-    $("a:last").click(function(){
-        next_pic();
-    })
-    // 悬浮停止
-    $(".wrapper").mouseover(function(){
-        clearInterval(id);
-    });
-    $(".wrapper").mouseout(function(){
-        autoplay();
-    })
-    // 下一张
-    function next_pic(){
-        index++;
-        if(index>7){
-            index=0;
-        }
-        addStyle();
-    }
-    
-    // 上一张
-    function prev_pic(){
-        index--;
-        if(index<0){
-            index=7;
-        }
-        addStyle();
-    }
-    // 控制图片显示隐藏,小圆点背景色
-    function addStyle(){
-        $("img").eq(index).fadeIn();
-        $("img").eq(index).siblings().fadeOut();
-    }
-    
-    // 自动轮播
-    var id;
-    autoplay();
-    function autoplay(){
-        id=setInterval(function(){
-            next_pic();
-        },2000)
-    }   
 	</script>
 </body>
 </html>
